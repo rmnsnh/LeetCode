@@ -7,6 +7,9 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
 
+        if k == 1:
+            return sum(nums)
+
         # pull out positive numbers
         pos = [0]
         for i in range(1, len(nums) - 1):
@@ -35,8 +38,6 @@ class Solution:
 
             if len(set(path[1:-1])) <= 1:
                 ret += path[1]*((len(path) - 1)//k)
-                if (len(path) - 1)%k != 0:
-                    ret += path[1]
                 continue
 
             # print(path)
@@ -44,23 +45,9 @@ class Solution:
             # for every node in djstras loop
             i = 0
             while i < len(path):
-                # rom = path[i + 1:min(len(path) - 1, i + k) + 1]
-                # print(rom)
-                # if len(rom) > 0 and max(rom) == rom[-1]:
-                #     print('yo')
-                #     print(rom[-1])
-                #     print(i)
-                #     print(min(len(path) - 1, i + k) + 1)
-                #     print()
-                    # negsum += rom[-1]
-                    # i = min(len(path) - 1, i + k) + 1
-                    # continue
                 for toCheck in range(i + 1, min(len(path) - 1, i + k) + 1):
-                    # print(i)
-                    # print(path[toCheck])
                     if short[toCheck] == -1 or short[i]+(path[toCheck]*-1) < short[toCheck]:
                         short[toCheck] = short[i]+(path[toCheck]*-1)
-                    # print(short)
                 i = i + 1
             ret += (-1*short[-1])
         return ret
