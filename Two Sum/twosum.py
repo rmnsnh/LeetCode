@@ -1,9 +1,10 @@
 from typing import List
+import copy
 
 class Solution:
 
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        original = nums
+        original = copy.deepcopy(nums)
         nums.sort()
         start = 0
         end = len(nums) - 1
