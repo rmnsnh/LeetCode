@@ -5,24 +5,27 @@ class Solution:
         ret = []
         dic = {}
         for i, c in enumerate(s):
-            dic[c] = i
-        val = -1
+            if c in dic:
+                dic[c].append(i)
+            else:
+                dic[c] = [i]
         for word in words:
             isSub = True
-            print(word)
+            val = -1
+        #     print(word)
             for i, c in enumerate(word):
                 val = dic.get(c, -2)
                 print(val)
                 print(c)
                 print(i)
                 print()
-                if val == -2:
-                    continue
-                elif i < val:
-                    isSub = False
-                    break
-                val = i
+            #     # if val == -2 or i < val:
+            #     if val == -2:
+            #         isSub = False
+            #         break
+            #     # val = i
             print(isSub)
+            print()
             if isSub:
                 ret.append(word)
         return ret
