@@ -6,14 +6,9 @@ class Solution:
         arr = []
         ret = []
         for num in reversed(nums):
-            print(num)
             temp = bisect.bisect_left(arr, num)
-            print(temp)
-            print(arr)
-            print(ret)
             ret.append(temp)
             arr.insert(temp, num)
-            print()
         return ret[::-1]
 
 
